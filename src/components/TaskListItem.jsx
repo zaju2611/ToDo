@@ -3,6 +3,7 @@ import EditTaskListItem from "./EditTaskListItem";
 
 function TaskListItem({ content, onDelete, onEdit }) {
 	const [showEdit, setShowEdit] = useState(false);
+	const [isChecked, setIsChecked] = useState(false);
 
 	const handleEditClick = () => {
 		setShowEdit(!showEdit);
@@ -12,6 +13,18 @@ function TaskListItem({ content, onDelete, onEdit }) {
 		onEdit(content, newContent);
 		setShowEdit(false);
 	};
+
+	const handleCheckboxChange = (event) => {
+		setIsChecked(event.target.checked);
+	};
+	let updateButton = <button onClick={handleEditClick}>Update</button>;
+	let deleteButton = <button onClick={onDelete}>Delete</button>;
+
+	if (isChecked) {
+		content = <span style={{ textDecoration: "line-through" }}>{content}</span>;
+		updateButton = null;
+		deleteButton = null;
+	}
 
 	let listItem = <div>{content}</div>;
 
@@ -23,9 +36,10 @@ function TaskListItem({ content, onDelete, onEdit }) {
 
 	return (
 		<div>
+			<input type="checkbox" onChange={handleCheckboxChange} />
 			{listItem}
-			<button onClick={handleEditClick}>Update</button>
-			<button onClick={onDelete}>Delete</button>
+			{updateButton}
+			{deleteButton}
 		</div>
 	);
 }

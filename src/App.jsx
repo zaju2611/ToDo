@@ -6,7 +6,7 @@ function App() {
 	const [tasks, setTasks] = useState([]);
 
 	const handleAddTask = (content) => {
-		const newTask = { content };
+		const newTask = { content, completed: false };
 		setTasks([...tasks, newTask]);
 	};
 
