@@ -1,0 +1,138 @@
+:root {
+	--lilac: #d891ef;
+	--violet: #9400d3;
+	--milk-white: #fffaf0;
+	--white: #fff;
+	--dark: #282a3a;
+}
+body {
+	position: relative;
+	height: 100vh;
+	background-color: var(--milk-white);
+	color: var(--white);
+}
+
+.tasksList {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--dark);
+	padding: 10px;
+	width: 50%;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.taskForm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+}
+
+.taskForm > .addTaskInput {
+	height: 1.2rem;
+	width: 60%;
+	margin-right: 10px;
+	font-size: 0.8rem;
+	padding: 5px;
+	text-align: center;
+}
+
+.taskForm > .addTaskInput:focus {
+	outline: none;
+}
+
+.taskForm > .addTaskButton {
+	position: relative;
+	font-size: 0.9rem;
+	border: 1px solid var(--white);
+	background-color: transparent;
+	color: var(--white);
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.taskForm > .addTaskButton::before {
+	content: "";
+	position: absolute;
+	top: -15px;
+	left: -100px;
+	height: 160%;
+	width: 100%;
+	background-image: linear-gradient(
+		-90deg,
+		rgba(255, 255, 255, 0.3),
+		rgba(255, 255, 255, 0)
+	);
+	transform: rotate(20deg);
+	transition: all 0.5s;
+	z-index: -1;
+}
+
+.taskForm > .addTaskButton:hover::before {
+	left: 130%;
+}
+.taskListItem {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	height: 25px;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 5px;
+	background-color: var(--lilac);
+}
+
+.taskListItem:nth-child(odd) {
+	background-color: var(--violet);
+}
+
+.taskListItem > .checkboxInput {
+	position: absolute;
+	left: 10px;
+}
+.taskListItem > .buttons {
+	position: absolute;
+	right: 10px;
+}
+.taskListItem > .taskText {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"] {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	position: relative;
+}
+
+input[type="checkbox"]::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-image: url("./icons/check.svg");
+	width: 25px;
+	height: 25px;
+	visibility: hidden;
+}
+
+input[type="checkbox"]:checked::before {
+	visibility: visible;
+}

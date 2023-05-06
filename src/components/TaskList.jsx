@@ -13,7 +13,7 @@ function TaskList({ tasks, onDelete, onEdit }) {
 	});
 
 	return (
-		<div>
+		<div >
 			<div>{renderedTask}</div>
 		</div>
 	);

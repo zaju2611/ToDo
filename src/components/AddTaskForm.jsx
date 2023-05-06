@@ -21,9 +21,16 @@ function AddTaskForm({ onAdd }) {
 
 	return (
 		<div>
-			<form onSubmit={handleAddTask}>
-				<input type="type" value={taskContent} onChange={handleChange} />
-				<button type="submit">+ Add task</button>
+			<form onSubmit={handleAddTask} className="taskForm">
+				<input
+					type="type"
+					value={taskContent}
+					onChange={handleChange}
+					className="addTaskInput"
+				/>
+				<button type="submit" className="addTaskButton">
+					+ Add task
+				</button>
 			</form>
 			{!isInputValid && <p style={{ color: "red" }}>Please enter a task.</p>}
 		</div>

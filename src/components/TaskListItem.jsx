@@ -26,20 +26,25 @@ function TaskListItem({ content, onDelete, onEdit }) {
 		deleteButton = null;
 	}
 
-	let listItem = <div>{content}</div>;
+	let listItem = <div className="taskText">{content}</div>;
 
 	if (showEdit) {
 		listItem = (
 			<EditTaskListItem taskContent={content} onEdit={handleEditSubmit} />
 		);
 	}
-
 	return (
-		<div>
-			<input type="checkbox" onChange={handleCheckboxChange} />
+		<div className="taskListItem">
+			<input
+				type="checkbox"
+				onChange={handleCheckboxChange}
+				className="checkboxInput"
+			/>
 			{listItem}
-			{updateButton}
-			{deleteButton}
+			<div className="buttons">
+				{updateButton}
+				{deleteButton}
+			</div>
 		</div>
 	);
 }

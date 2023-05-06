@@ -1,6 +1,7 @@
 import AddTaskForm from "./components/AddTaskForm";
 import TaskList from "./components/TaskList";
 import { useState } from "react";
+import "./index.css";
 
 function App() {
 	const [tasks, setTasks] = useState([]);
@@ -27,7 +28,7 @@ function App() {
 	};
 
 	return (
-		<div>
+		<div className="tasksList">
 			<h3>What you have to do today?</h3>
 			<AddTaskForm onAdd={handleAddTask} />
 			<TaskList
