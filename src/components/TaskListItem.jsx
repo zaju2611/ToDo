@@ -1,7 +1,9 @@
 import { useState } from "react";
 import EditTaskListItem from "./EditTaskListItem";
+import { BsFillPencilFill } from "react-icons/bs";
+import { AiFillDelete } from "react-icons/ai";
 
-function TaskListItem({ content, onDelete, onEdit }) {
+function TaskListItem({ task, onDelete, onEdit }) {
 	const [showEdit, setShowEdit] = useState(false);
 	const [isChecked, setIsChecked] = useState(false);
 
@@ -9,29 +11,39 @@ function TaskListItem({ content, onDelete, onEdit }) {
 		setShowEdit(!showEdit);
 	};
 
-	const handleEditSubmit = (newContent) => {
-		onEdit(content, newContent);
+	const handleEditSubmit = (id, newContent) => {
+		onEdit(id, newContent);
 		setShowEdit(false);
 	};
 
 	const handleCheckboxChange = (event) => {
 		setIsChecked(event.target.checked);
 	};
-	let updateButton = <button onClick={handleEditClick}>Update</button>;
-	let deleteButton = <button onClick={onDelete}>Delete</button>;
+	let updateButton = (
+		<button className="updateButton" onClick={handleEditClick}>
+			<BsFillPencilFill className="icon" />
+		</button>
+	);
+
+	const handleDelete = () => {
+		onDelete(task.id);
+	};
+
+	let deleteButton = (
+		<button className="deleteButton" onClick={handleDelete}>
+			<AiFillDelete className="icon" />
+		</button>
+	);
 
 	if (isChecked) {
-		content = <span style={{ textDecoration: "line-through" }}>{content}</span>;
 		updateButton = null;
 		deleteButton = null;
 	}
 
-	let listItem = <div className="taskText">{content}</div>;
+	let listItem = <div className="taskText">{task.content}</div>;
 
 	if (showEdit) {
-		listItem = (
-			<EditTaskListItem taskContent={content} onEdit={handleEditSubmit} />
-		);
+		listItem = <EditTaskListItem task={task} onEdit={handleEditSubmit} />;
 	}
 	return (
 		<div className="taskListItem">
