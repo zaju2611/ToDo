@@ -4,17 +4,20 @@
 	--milk-white: #fffaf0;
 	--white: #fff;
 	--light-grey: #434551;
+	--grey: #333;
+	--dark-grey: #222;
 	--dark: #282a3a;
 }
 body {
 	font-family: "Rubik", sans-serif;
 	position: relative;
-	height: 100vh;
+	min-height: calc(100vh - 60px);
 	background-color: var(--light-grey);
 	color: var(--white);
 }
 
 h3 {
+	font-size: 1.5rem;
 	margin: 15px;
 }
 
@@ -24,11 +27,34 @@ h3 {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: var(--dark);
-	min-height: 400px;
+	min-height: 425px;
+
 	padding: 10px;
 	width: 50%;
 	border-radius: 10px;
 	text-align: center;
+}
+
+.list {
+	max-height: 175px;
+	overflow-y: scroll;
+}
+.list::-webkit-scrollbar {
+	width: 10px;
+}
+
+.list::-webkit-scrollbar-thumb {
+	background-color: var(--grey);
+	border-radius: 5px;
+}
+
+.list::-webkit-scrollbar-track {
+	background-color: var(--light-grey);
+	border-radius: 5px;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+	background-color: var(--dark-grey);
 }
 
 .taskForm {
@@ -95,7 +121,7 @@ h3 {
 	flex-direction: row;
 	height: 25px;
 	padding: 10px;
-	margin: 10px 0;
+	margin: 10px;
 	border-radius: 5px;
 	background-color: var(--lilac);
 }
@@ -170,14 +196,18 @@ h3 {
 }
 
 .taskSummary {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
-	flex-wrap: wrap;
 }
 
 .taskSummaryItem {
+	width: 110px;
 	border: 1px solid var(--violet);
 	margin: 10px 20px;
 	border-radius: 5px;
@@ -193,6 +223,92 @@ h3 {
 	font-size: 2rem;
 	font-weight: bold;
 	margin: 10px;
+}
+
+.dayButton {
+	position: relative;
+	background-color: var(--white);
+	color: var(--white);
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 0.9rem;
+	margin: 5px;
+	font-weight: bold;
+	padding: 10px 20px;
+	transition: 0.5s;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+}
+.dayButton:hover {
+	background: var(--violet);
+	color: var(--violet);
+	letter-spacing: 0.1rem;
+	box-shadow: 0 0 20px var(--violet);
+}
+
+.dayButton:hover:nth-child(odd) {
+	background-color: var(--lilac);
+	color: var(--lilac);
+}
+.dayButton:before {
+	content: "";
+	position: absolute;
+	inset: 2px;
+	background: var(--light-grey);
+	border-radius: 5px;
+}
+
+.dayButton span {
+	position: relative;
+	z-index: 1;
+}
+
+.dayButton i {
+	position: absolute;
+	inset: 0;
+	display: block;
+}
+
+.dayButton i::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 80%;
+	width: 6px;
+	height: 2px;
+	background: var(--light-grey);
+	transform: translateX(-50%) skewX(325deg);
+	transition: 0.5s;
+}
+
+.dayButton:hover i::before {
+	width: 20px;
+	left: 20%;
+}
+
+.dayButton i::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 20%;
+	width: 6px;
+	height: 2px;
+	background: var(--light-grey);
+	transform: translateX(-50%) skewX(325deg);
+	transition: 0.5s;
+}
+
+.dayButton:hover i::after {
+	width: 20px;
+	left: 80%;
+}
+
+.selectDay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
 }
 
 input[type="checkbox"] {

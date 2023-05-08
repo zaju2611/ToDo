@@ -15,7 +15,7 @@ function TaskList({ tasks, onDelete, onEdit, onChange }) {
 
 	return (
 		<div>
-			<div>{renderedTask}</div>
+			<div className="list">{renderedTask}</div>
 		</div>
 	);
 }

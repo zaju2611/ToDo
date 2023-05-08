@@ -4,23 +4,46 @@ import { useState, useEffect } from "react";
 import "./index.css";
 import axios from "axios";
 import TaskSummary from "./components/TaskSummary";
+import SelectDay from "./components/SelectDay";
 
 function App() {
 	const [tasks, setTasks] = useState([]);
+	const [selectDay, setSelectedDay] = useState("Monday");
 
 	const fetchTasks = async () => {
-		const response = await axios.get("http://localhost:3001/tasks");
-		setTasks(response.data);
+		try {
+			const response = await axios.get(
+				`http://localhost:3001/tasks?dayId=${selectDay}`
+			);
+			setTasks(
+				response.data
+					.map((task) => {
+						if (task.dayName === selectDay) {
+							return task;
+						}
+						return null;
+					})
+					.filter((task) => task !== null)
+			);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	useEffect(() => {
 		fetchTasks();
-	}, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectDay]);
+
+	const handleSelectDay = (day) => {
+		setSelectedDay(day);
+	};
 
 	const handleAddTask = async (content) => {
 		const response = await axios.post("http://localhost:3001/tasks", {
 			content,
 			isDone: false,
+			dayName: selectDay,
 		});
 
 		const newTasks = [...tasks, response.data];
@@ -37,9 +60,12 @@ function App() {
 		setTasks(updatedTasks);
 	};
 
-	const handleEditTask = async (index, newTaskContent) => {
+	const handleEditTask = async (index, newTaskContent, isDone, dayName) => {
 		const response = await axios.put(`http://localhost:3001/tasks/${index}`, {
+			id: index,
+			isDone: isDone,
 			content: newTaskContent,
+			dayName: dayName,
 		});
 
 		const updatedTasks = tasks.map((task) => {
@@ -51,10 +77,12 @@ function App() {
 		setTasks(updatedTasks);
 	};
 
-	const handleCheckTask = async (id, content, isDone) => {
+	const handleCheckTask = async (id, content, isDone, dayName) => {
 		await axios.put(`http://localhost:3001/tasks/${id}`, {
-			content: content,
+			id: id,
 			isDone: isDone,
+			content: content,
+			dayName: dayName,
 		});
 		fetchTasks();
 	};
@@ -62,7 +90,7 @@ function App() {
 	let doneTask = 0;
 	let tasksToDo = 0;
 
-	tasks.map((task) => {
+	tasks.forEach((task) => {
 		if (task.isDone) {
 			doneTask++;
 		} else {
@@ -71,18 +99,22 @@ function App() {
 	});
 
 	return (
-		<div className="tasksList">
-			<h3>What you have to do today?</h3>
-			<AddTaskForm onAdd={handleAddTask} />
-			<TaskList
-				tasks={tasks}
-				onDelete={handleDeleteTask}
-				onEdit={handleEditTask}
-				onChange={handleCheckTask}
-			/>
-			<div className="taskSummary">
-				<TaskSummary count={tasksToDo}>Tasks to do</TaskSummary>
-				<TaskSummary count={doneTask}>Done tasks</TaskSummary>
+		<div>
+			<SelectDay onSelectDay={handleSelectDay} />
+
+			<div className="tasksList">
+				<h3>What you have to do on {selectDay}?</h3>
+				<AddTaskForm onAdd={handleAddTask} />
+				<TaskList
+					tasks={tasks}
+					onDelete={handleDeleteTask}
+					onEdit={handleEditTask}
+					onChange={handleCheckTask}
+				/>
+				<div className="taskSummary">
+					<TaskSummary count={tasksToDo}>Tasks to do</TaskSummary>
+					<TaskSummary count={doneTask}>Done tasks</TaskSummary>
+				</div>
 			</div>
 		</div>
 	);

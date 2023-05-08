@@ -12,13 +12,13 @@ function TaskListItem({ task, onDelete, onEdit, onCheck }) {
 	};
 
 	const handleEditSubmit = (id, newContent) => {
-		onEdit(id, newContent);
+		onEdit(id, newContent, task.isDone, task.dayName);
 		setShowEdit(false);
 	};
 
 	const handleCheckboxChange = async (event) => {
 		setIsChecked(event.target.checked);
-		onCheck(task.id, task.content, event.target.checked);
+		onCheck(task.id, task.content, event.target.checked, task.dayName);
 	};
 
 	let updateButton = (

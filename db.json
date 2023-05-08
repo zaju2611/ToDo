@@ -1,29 +1,76 @@
 {
-  "tasks": [
-    {
-      "content": "mam umyć naczynia",
-      "isDone": false,
-      "id": 1
-    },
-    {
-      "content": "Wysłać list",
-      "id": 2
-    },
-    {
-      "content": "odrobić pracę domową",
-      "id": 3
-    },
-    {
-      "content": "Zrobić obiad",
-      "id": 4
-    },
-    {
-      "content": "umyć podłogę",
-      "id": 5
-    },
-    {
-      "content": "zrobić zakupy",
-      "id": 6
-    }
-  ]
+	"tasks": [
+		{
+			"id": 1,
+			"isDone": true,
+			"content": "go to the cinema",
+			"dayName": "Monday"
+		},
+		{
+			"content": "send email to boss",
+			"isDone": false,
+			"dayName": "Tuesday",
+			"id": 2
+		},
+		{
+			"content": "Emily birthday",
+			"isDone": false,
+			"dayName": "Tuesday",
+			"id": 3
+		},
+		{
+			"content": "visit grandparents",
+			"isDone": false,
+			"dayName": "Wednesday",
+			"id": 4
+		},
+		{
+			"content": "read books",
+			"isDone": false,
+			"dayName": "Wednesday",
+			"id": 5
+		},
+		{
+			"id": 6,
+			"isDone": true,
+			"content": "do homework",
+			"dayName": "Wednesday"
+		},
+		{
+			"content": "go with dog to the doctor",
+			"isDone": false,
+			"dayName": "Wednesday",
+			"id": 7
+		},
+		{
+			"content": "invite friends",
+			"isDone": false,
+			"dayName": "Thursday",
+			"id": 8
+		},
+		{
+			"content": "make party",
+			"isDone": false,
+			"dayName": "Friday",
+			"id": 9
+		},
+		{
+			"content": "clean house",
+			"isDone": false,
+			"dayName": "Saturday",
+			"id": 10
+		},
+		{
+			"content": "relax",
+			"isDone": false,
+			"dayName": "Saturday",
+			"id": 11
+		},
+		{
+			"content": "go to the swimmingpool",
+			"isDone": false,
+			"dayName": "Sunday",
+			"id": 12
+		}
+	]
 }
