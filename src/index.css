@@ -42,7 +42,7 @@ h3 {
 .taskForm > .addTaskInput {
 	height: 1.2rem;
 	width: 60%;
-	margin-right: 10px;
+	margin-right: 20px;
 	font-size: 0.8rem;
 	border-radius: 10px;
 	border: none;
@@ -57,10 +57,11 @@ h3 {
 .taskForm > .addTaskButton {
 	position: relative;
 	font-size: 0.9rem;
-	border: 1px solid var(--white);
+	border: 1px solid var(--lilac);
+	box-shadow: 0 0 10px 2px var(--lilac);
 	background-color: transparent;
 	color: var(--white);
-	padding: 5px;
+	padding: 8px;
 	cursor: pointer;
 	border-radius: 5px;
 	overflow: hidden;
@@ -166,6 +167,32 @@ h3 {
 
 .editForm > .input:focus {
 	outline: none;
+}
+
+.taskSummary {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.taskSummaryItem {
+	border: 1px solid var(--violet);
+	margin: 10px 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px 5px var(--violet);
+}
+
+.taskSummaryHeader {
+	font-size: 1rem;
+	margin: 10px;
+}
+
+.taskSummaryCount {
+	font-size: 2rem;
+	font-weight: bold;
+	margin: 10px;
 }
 
 input[type="checkbox"] {

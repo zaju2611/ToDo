@@ -3,9 +3,9 @@ import EditTaskListItem from "./EditTaskListItem";
 import { BsFillPencilFill } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 
-function TaskListItem({ task, onDelete, onEdit }) {
+function TaskListItem({ task, onDelete, onEdit, onCheck }) {
 	const [showEdit, setShowEdit] = useState(false);
-	const [isChecked, setIsChecked] = useState(false);
+	const [isChecked, setIsChecked] = useState(task.isDone);
 
 	const handleEditClick = () => {
 		setShowEdit(!showEdit);
@@ -16,9 +16,11 @@ function TaskListItem({ task, onDelete, onEdit }) {
 		setShowEdit(false);
 	};
 
-	const handleCheckboxChange = (event) => {
+	const handleCheckboxChange = async (event) => {
 		setIsChecked(event.target.checked);
+		onCheck(task.id, task.content, event.target.checked);
 	};
+
 	let updateButton = (
 		<button className="updateButton" onClick={handleEditClick}>
 			<BsFillPencilFill className="icon" />
@@ -51,6 +53,7 @@ function TaskListItem({ task, onDelete, onEdit }) {
 				type="checkbox"
 				onChange={handleCheckboxChange}
 				className="checkboxInput"
+				checked={isChecked}
 			/>
 			{listItem}
 			<div className="buttons">

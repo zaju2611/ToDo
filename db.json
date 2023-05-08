@@ -1,8 +1,29 @@
 {
   "tasks": [
     {
-      "content": "umyj sie",
+      "content": "mam umyć naczynia",
+      "isDone": false,
       "id": 1
+    },
+    {
+      "content": "Wysłać list",
+      "id": 2
+    },
+    {
+      "content": "odrobić pracę domową",
+      "id": 3
+    },
+    {
+      "content": "Zrobić obiad",
+      "id": 4
+    },
+    {
+      "content": "umyć podłogę",
+      "id": 5
+    },
+    {
+      "content": "zrobić zakupy",
+      "id": 6
     }
   ]
 }

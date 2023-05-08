@@ -1,6 +1,6 @@
 import TaskListItem from "./TaskListItem";
 
-function TaskList({ tasks, onDelete, onEdit }) {
+function TaskList({ tasks, onDelete, onEdit, onChange }) {
 	const renderedTask = tasks.map((task, index) => {
 		return (
 			<TaskListItem
@@ -8,6 +8,7 @@ function TaskList({ tasks, onDelete, onEdit }) {
 				task={task}
 				onDelete={onDelete}
 				onEdit={onEdit}
+				onCheck={onChange}
 			/>
 		);
 	});
