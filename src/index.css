@@ -440,10 +440,6 @@ input[type="checkbox"]:checked::before {
 		width: 90px;
 	}
 
-	.taskSummaryHeader {
-		font-size: 0.6rem;
-	}
-
 	.taskSummaryCount {
 		font-size: 1.4rem;
 	}
@@ -485,16 +481,11 @@ input[type="checkbox"]:checked::before {
 	}
 
 	.taskSummaryItem {
-		width: 90px;
 		margin: 10px 10px;
 	}
 
 	.taskSummaryHeader {
 		font-size: 0.6rem;
-	}
-
-	.taskSummaryCount {
-		font-size: 1.4rem;
 	}
 }
 
