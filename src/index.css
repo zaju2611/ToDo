@@ -454,10 +454,6 @@ input[type="checkbox"]:checked::before {
 		font-size: 0.6rem;
 	}
 
-	h3 {
-		font-size: 1rem;
-	}
-
 	.tasksList {
 		margin: 50px 0;
 		width: 90%;
