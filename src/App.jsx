@@ -8,17 +8,17 @@ import SelectDay from "./components/SelectDay";
 
 function App() {
 	const [tasks, setTasks] = useState([]);
-	const [selectDay, setSelectedDay] = useState("Monday");
+	const [selectedDay, setSelectedDay] = useState("Monday");
 
 	const fetchTasks = async () => {
 		try {
 			const response = await axios.get(
-				`http://localhost:3001/tasks?dayId=${selectDay}`
+				`http://localhost:3001/tasks?dayId=${selectedDay}`
 			);
 			setTasks(
 				response.data
 					.map((task) => {
-						if (task.dayName === selectDay) {
+						if (task.dayName === selectedDay) {
 							return task;
 						}
 						return null;
@@ -32,8 +32,7 @@ function App() {
 
 	useEffect(() => {
 		fetchTasks();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [selectDay]);
+	}, [selectedDay]);
 
 	const handleSelectDay = (day) => {
 		setSelectedDay(day);
@@ -43,7 +42,7 @@ function App() {
 		const response = await axios.post("http://localhost:3001/tasks", {
 			content,
 			isDone: false,
-			dayName: selectDay,
+			dayName: selectedDay,
 		});
 
 		const newTasks = [...tasks, response.data];
@@ -103,7 +102,7 @@ function App() {
 			<SelectDay onSelectDay={handleSelectDay} />
 
 			<div className="tasksList">
-				<h3>What you have to do on {selectDay}?</h3>
+				<h3>What you have to do on {selectedDay}?</h3>
 				<AddTaskForm onAdd={handleAddTask} />
 				<TaskList
 					tasks={tasks}

@@ -30,13 +30,13 @@ h3 {
 	min-height: 425px;
 
 	padding: 10px;
-	width: 50%;
+	width: 60%;
 	border-radius: 10px;
 	text-align: center;
 }
 
 .list {
-	max-height: 175px;
+	max-height: 173px;
 	overflow-y: scroll;
 }
 .list::-webkit-scrollbar {
@@ -308,6 +308,7 @@ h3 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 	margin-top: 50px;
 }
 
@@ -339,4 +340,166 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
 	visibility: visible;
+}
+
+@media (max-width: 786px) {
+	h3 {
+		font-size: 1.3rem;
+	}
+
+	.tasksList {
+		width: 70%;
+	}
+
+	.list {
+		max-height: 155px;
+	}
+	.taskForm {
+		flex-direction: column;
+		margin-bottom: 0.2em;
+	}
+
+	.taskForm > .addTaskInput {
+		width: 80%;
+		margin-right: 0;
+		margin-bottom: 1em;
+	}
+	.taskForm > .addTaskButton {
+		font-size: 0.8rem;
+	}
+
+	.taskListItem {
+		font-size: 0.8rem;
+		height: 20px;
+		flex-direction: column;
+	}
+
+	.icon {
+		font-size: 1rem;
+	}
+	input[type="checkbox"] {
+		width: 25px;
+		height: 25px;
+	}
+	input[type="checkbox"]::before {
+		background-image: url("./icons/check_medium.svg");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.editForm > .input {
+		font-size: 0.8rem;
+	}
+
+	.taskSummaryItem {
+		width: 100px;
+	}
+
+	.taskSummaryHeader {
+		font-size: 0.8rem;
+	}
+
+	.taskSummaryCount {
+		font-size: 1.7rem;
+	}
+}
+@media (max-width: 576px) {
+	.dayButton {
+		font-size: 0.7rem;
+	}
+
+	h3 {
+		font-size: 1.1rem;
+	}
+
+	.tasksList {
+		width: 80%;
+	}
+	.taskForm > .addTaskInput {
+		height: 1rem;
+	}
+
+	.taskListItem {
+		font-size: 0.7rem;
+	}
+
+	.icon {
+		font-size: 0.9rem;
+	}
+
+	.taskForm > .addTaskButton {
+		font-size: 0.7rem;
+	}
+
+	.editForm > .input {
+		width: 120px;
+		font-size: 0.7rem;
+	}
+
+	.taskSummaryItem {
+		width: 90px;
+	}
+
+	.taskSummaryHeader {
+		font-size: 0.6rem;
+	}
+
+	.taskSummaryCount {
+		font-size: 1.4rem;
+	}
+}
+@media (max-width: 400px) {
+	.selectDay {
+		margin-top: 20px;
+	}
+	.dayButton {
+		font-size: 0.6rem;
+	}
+
+	h3 {
+		font-size: 1rem;
+	}
+
+	.tasksList {
+		margin: 50px 0;
+		width: 90%;
+	}
+
+	.icon {
+		font-size: 0.8rem;
+	}
+	.taskListItem > .buttons {
+		right: 0px;
+	}
+	.taskListItem > .checkboxInput {
+		left: 5px;
+	}
+	.updateButton,
+	.deleteButton {
+		margin-right: 5px;
+	}
+	.editForm > .input {
+		width: 90px;
+		font-size: 0.6rem;
+		margin-right: 5px;
+	}
+
+	.taskSummaryItem {
+		width: 90px;
+		margin: 10px 10px;
+	}
+
+	.taskSummaryHeader {
+		font-size: 0.6rem;
+	}
+
+	.taskSummaryCount {
+		font-size: 1.4rem;
+	}
+}
+
+@media (max-width: 300px) {
+	.tasksList {
+		margin: 100px 0;
+	}
 }
