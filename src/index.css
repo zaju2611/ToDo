@@ -403,6 +403,7 @@ input[type="checkbox"]:checked::before {
 		font-size: 1.7rem;
 	}
 }
+
 @media (max-width: 576px) {
 	.dayButton {
 		font-size: 0.7rem;
@@ -444,6 +445,7 @@ input[type="checkbox"]:checked::before {
 		font-size: 1.4rem;
 	}
 }
+
 @media (max-width: 400px) {
 	.selectDay {
 		margin-top: 20px;
